@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>效果</title>
+    <script src="jquery-1.8.3.min.js"></script>
+    <style>
+        *{
+            list-style:none;
+            padding:0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .box{
+            width:600px;
+            height:500px;
+            margin:20px auto 0;
+            border:1px solid #eee;
+        }
+        .case{
+            width:100%;
+            height:100%;
+            background: red;
+            font-size: 40px;
+            text-align: center;
+            line-height:500px;
+            color: #fff;
+        }
+        .btn{
+            width:600px;
+            overflow: hidden;
+            margin:0 auto;
+            border:1px solid #000;
+        }
+        button{
+            padding:10px 15px;
+            background: #eee;
+            outline: none;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="case">
+            <span>_(:зゝ∠)_</span>
+        </div>
+    </div>
+    <div class="btn">
+        <button class="show">显示</button>
+        <button class="hide">隐藏</button>
+        <button class="hs">显示/隐藏</button>
+        <button class="fl">淡入</button>
+        <button class="fo">淡出</button>
+        <button class="lo">淡入/淡出</button>
+        <button class="ft">透明度</button>
+        <button class="su">上划</button>
+        <button class="sl">下拉</button>
+        <button class="ul">上划/下拉</button>
+        <button class="dh">动画</button>
+        <button class="dd">动画队列</button>
+        <button class="td">停止动画</button>
+        <button class="lian">jQuery链</button>
+    </div>
+</body>
+</html>
+<script>
+    $(function () {
+        //显示
+        $('.show').click(function () {
+            $('.case').show(1000);
+        });
+        //隐藏
+        $('.hide').click(function () {
+            $('.case').hide(1000);
+        });
+        //显示和隐藏切换
+        $('.hs').click(function () {
+            $('.case').toggle(1000);
+        });
+        //淡入
+        $('.fl').click(function () {
+            $('.case').fadeIn('slow');
+        });
+        //淡出
+        $('.fo').click(function () {
+            $('.case').fadeOut(1000);
+        });
+        //淡入和淡出切换
+        $('.lo').click(function () {
+            $('.case').fadeToggle(1000);
+        });
+        //指定透明度
+        $('.ft').click(function () {
+            $('.case').fadeTo(1000,Math.random());
+        });
+        //上划
+        $('.su').click(function () {
+            $('.case').slideUp(1000);
+        });
+        //下拉
+        $('.sl').click(function () {
+            $('.case').slideDown(1000);
+        });
+        //上划/下拉
+        $('.ul').click(function () {
+            $('.case').slideToggle(1000,function () {
+                alert('动画完成')
+            });
+        });
+        //动画
+        $('.dh').click(function () {
+            $('.case').animate({height:'toggle'},function () {
+                $('.case').animate({height:'toggle'})
+            })
+        })
+        ///动画队列
+        $('.dd').click(function () {
+            var div = $('.case');
+            div.animate({height:'50%',opacity:'0.4',lineHeight:'250px'},'slow');
+            div.animate({width:'50%',opacity:'0.8'},'slow');
+            div.animate({fontSize:'80px'},'slow');
+            div.animate({height:'100%',opacity:'0.4',lineHeight:'500px'},'slow');
+            div.animate({width:'100%',opacity:'0.8'},'slow');
+            div.animate({fontSize:'40px'},'slow');
+        });
+        //停止动画
+        $('.td').click(function () {
+            $('.case').stop();
+        });
+        //jQuery链，可以链接多个方法
+        $('.lian').click(function () {
+            $('.case').css('background-color','blue')
+                .slideUp(2000)
+                .slideDown(2000)
+                .css('background-color','red');
+        });
+
+    })
+</script>
